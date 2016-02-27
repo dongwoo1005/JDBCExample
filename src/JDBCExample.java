@@ -65,7 +65,7 @@ public class JDBCExample {
                 "PRIMARY KEY(eid, did))";
         stmt.executeUpdate(createWorksTable);
         System.out.println("Created Table works");
-
+        stmt.close();
         connection.commit();
         System.out.println("Commited a Transaction");
 
@@ -83,9 +83,12 @@ public class JDBCExample {
         String populateEmp = "INSERT INTO emp VALUES(?, ?, ?, ?)";
         PreparedStatement pstmt = connection.prepareStatement(populateEmp);
 
+        System.out.println("Reading " + file);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String tuple = "";
         String comma = ",";
+
+        System.out.println("Inserting Into emp...");
         while ((tuple = br.readLine()) != null){
             String[] attributes = tuple.split(comma);
             pstmt.clearParameters();
@@ -99,9 +102,39 @@ public class JDBCExample {
         pstmt.executeBatch();
         pstmt.close();
         connection.commit();
+        System.out.println("Commited a Transaction");
 
 
-        // (c)
+        // (c) <b> store function: </b>
+        /*
+        should contain all the code necessary (including variable declarations) to perform
+        <b> a single transaction </b> to store the function <i> getnames(real) </i> in the database.
+        The SQL statement for creating the function is listed below.
+        Your code <b> must use </> a <i> Statement </i> object.
+         */
+        System.out.println("Storing Function...");
+        stmt = connection.createStatement();
+        String createFunction =
+                "CREATE OR REPLACE FUNCTION getnames(minsalary real)" +
+                "RETURNS refcursor AS" +
+                "$BODY$" +
+                "DECLARE mycurs refcursor;" +
+                "BEGIN" +
+                    "OPEN mycurs FOR" +
+                    "SELECT DISTINCT ename" +
+                    "WHERE salary >= minsalary" +
+                    "ORDER BY ename ASC;" +
+                    "RETURN mycurs;" +
+                "END" +
+                "$BODY$" +
+                "LANGUAGE plpgsql;";
+        stmt.executeUpdate(createFunction);
+        System.out.println("Stored Function");
+        stmt.close();
+        connection.commit();
+        System.out.println("Commited a Transaction");
+
+
 
         // (d)
 //        int salary = Integer.parseInt(args[6]);
