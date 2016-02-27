@@ -160,6 +160,7 @@ public class JDBCExample {
             System.out.println(rsrs.getString(1));
         }
         cstmt.close();
+        System.out.println("Finish Calling Function");
 
         // closing database connection
         connection.close();
