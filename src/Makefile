@@ -6,7 +6,7 @@ all:
 
 run: all
 	@echo "Running..."
-	java -cp 'postgresql-9.4.1208.jre6.jar:.' $(NAME) postgres.student.cs 5432 d3son d3son Ehddnths93
+	java -cp 'postgresql-9.4.1208.jre6.jar:.' $(NAME) postgres.student.cs 5432 d3son d3son Ehddnths93 emp.csv
 
 clean:
 	rm -rf *.class
