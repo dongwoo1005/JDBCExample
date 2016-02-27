@@ -151,12 +151,13 @@ public class JDBCExample {
         CallableStatement cstmt = connection.prepareCall(callFunction);
         cstmt.setInt(1, salary);
 
-
         ResultSet rs = cstmt.executeQuery();
         System.out.println("Executing Query...");
-        while(rs.next()){
-//            System.out.println(rs.getString("ename"));
-            System.out.println(rs.getString(1));
+        rs.next();
+        Object o = rs.getObject(1); // ref cursor
+        ResultSet rsrs = (ResultSet) o;
+        while(rsrs.next()){
+            System.out.println(rsrs.getString(1));
         }
         cstmt.close();
 
