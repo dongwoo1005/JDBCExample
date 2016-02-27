@@ -122,6 +122,7 @@ public class JDBCExample {
                 "BEGIN " +
                     "OPEN mycurs FOR " +
                     "SELECT DISTINCT ename " +
+                    "FROM emp " +
                     "WHERE salary >= minsalary " +
                     "ORDER BY ename ASC; " +
                     "RETURN mycurs; " +
