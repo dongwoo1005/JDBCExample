@@ -32,14 +32,13 @@ public class JDBCExample {
         The SQL statements for creating these tables are listed below.
         Your code <b> must use </b> a <i> Statement </i> object and make 3 calls to the <i> executeUpdate </i> method.
          */
-        //test
-        connection.getTransactionIsolation();
-
-        connection.setTransactionIsolation(Connection.TRANSACTION_NONE);
-        connection.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
-        connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-        connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
-        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+//        connection.getTransactionIsolation();
+//
+//        connection.setTransactionIsolation(Connection.TRANSACTION_NONE);
+//        connection.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
+//        connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+//        connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+//        connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 
 
 
