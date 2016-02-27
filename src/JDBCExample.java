@@ -135,10 +135,30 @@ public class JDBCExample {
         connection.commit();
         System.out.println("Commited a Transaction");
 
+        // (d) <b> select from function: </b>
+        /*
+        should contain all the code necessary (including variable declarations) to perform
+        <b> a single transaction </b> to call the function <i> getnames(real) </i> with the integer parameter
+        <i> salary </i> (taken from <i> args[6] </i>) and list the returned tuples
+        on the standard output (<i> System.out </i>).
+        To call the function your code <b> must use </> a <i> CallableStatement </i> object.
+         */
+
+        int salary = Integer.parseInt(args[6]);
+
+        System.out.println("Selecting from Function...");
+        String callFunction = "{call getnames(?)}";
+        CallableStatement cstmt = connection.prepareCall(callFunction);
+        cstmt.setInt(1, salary);
 
 
-        // (d)
-//        int salary = Integer.parseInt(args[6]);
+        ResultSet rs = cstmt.executeQuery();
+        System.out.println("Executing Query...");
+        while(rs.next()){
+            System.out.println(rs.getInt("eid") + comma + rs.getString("ename") +
+                    comma + rs.getInt("age") + comma + rs.getInt("salary"));
+        }
+        cstmt.close();
 
         // closing database connection
         connection.close();
