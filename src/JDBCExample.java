@@ -44,7 +44,7 @@ public class JDBCExample {
                 "eid NUMERIC(9, 0) PRIMARY KEY," +
                 "ename VARCHAR(30)," +
                 "age NUMERIC(3, 0)," +
-                "salary NUMERIC(10, 2)";
+                "salary NUMERIC(10, 2))";
         stmt.executeUpdate(createEmpTable);
         System.out.println("Created Table emp");
 
@@ -53,7 +53,7 @@ public class JDBCExample {
                 "did NUMERIC(2, 0) PRIMARY KEY," +
                 "dname VARCHAR(20)," +
                 "budget NUMERIC(10, 2)," +
-                "managerid NUMERIC(9,0) REFERENCES emp(eid)";
+                "managerid NUMERIC(9,0) REFERENCES emp(eid))";
         stmt.executeUpdate(createDeptTable);
         System.out.println("Created Table dept");
 
@@ -62,7 +62,7 @@ public class JDBCExample {
                 "eid NUMERIC(9,0) REFERENCES emp," +
                 "did NUMERIC(2,0) REFERENCES dept," +
                 "pct_time NUMERIC(3,0)," +
-                "PRIMARY KEY(eid, did)";
+                "PRIMARY KEY(eid, did))";
         stmt.executeUpdate(createWorksTable);
         System.out.println("Created Table works");
 
