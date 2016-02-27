@@ -115,18 +115,18 @@ public class JDBCExample {
         System.out.println("Storing Function...");
         stmt = connection.createStatement();
         String createFunction =
-                "CREATE OR REPLACE FUNCTION getnames(minsalary real)" +
-                "RETURNS refcursor AS" +
-                "$BODY$" +
-                "DECLARE mycurs refcursor;" +
-                "BEGIN" +
-                    "OPEN mycurs FOR" +
-                    "SELECT DISTINCT ename" +
-                    "WHERE salary >= minsalary" +
-                    "ORDER BY ename ASC;" +
-                    "RETURN mycurs;" +
-                "END" +
-                "$BODY$" +
+                "CREATE OR REPLACE FUNCTION getnames(minsalary real) " +
+                "RETURNS refcursor AS " +
+                "$BODY$ " +
+                "DECLARE mycurs refcursor; " +
+                "BEGIN " +
+                    "OPEN mycurs FOR " +
+                    "SELECT DISTINCT ename " +
+                    "WHERE salary >= minsalary " +
+                    "ORDER BY ename ASC; " +
+                    "RETURN mycurs; " +
+                "END " +
+                "$BODY$ " +
                 "LANGUAGE plpgsql;";
         stmt.executeUpdate(createFunction);
         System.out.println("Stored Function");
