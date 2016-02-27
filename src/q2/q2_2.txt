@@ -1,0 +1,2 @@
+ERROR:  check constraint "check_salary" is violated by some row
+=> there are tuples in emp table that have salary less than 20000.

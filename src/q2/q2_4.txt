@@ -1,0 +1,15 @@
+d3son=> \d emp
+             Table "public.emp"
+ Column |         Type          | Modifiers
+--------+-----------------------+-----------
+ eid    | numeric(9,0)          | not null
+ ename  | character varying(30) |
+ age    | numeric(3,0)          |
+ salary | numeric(10,2)         |
+Indexes:
+    "emp_pkey" PRIMARY KEY, btree (eid)
+Check constraints:
+    "check_salary" CHECK (salary >= 20000::numeric)
+Referenced by:
+    TABLE "dept" CONSTRAINT "dept_managerid_fkey" FOREIGN KEY (managerid) REFERENCES emp(eid)
+    TABLE "works" CONSTRAINT "works_eid_fkey" FOREIGN KEY (eid) REFERENCES emp(eid)
