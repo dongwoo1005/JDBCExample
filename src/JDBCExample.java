@@ -155,7 +155,8 @@ public class JDBCExample {
         ResultSet rs = cstmt.executeQuery();
         System.out.println("Executing Query...");
         while(rs.next()){
-            System.out.println(rs.getString("ename"));
+//            System.out.println(rs.getString("ename"));
+            System.out.println(rs.getString(1));
         }
         cstmt.close();
 
