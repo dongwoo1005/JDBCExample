@@ -43,12 +43,12 @@ public class JDBCExample {
 
 
         // (b)
-        File file = new File(args[5]);
+//        File file = new File(args[5]);
 
         // (c)
 
         // (d)
-        int salary = Integer.parseInt(args[6]);
+//        int salary = Integer.parseInt(args[6]);
 
         // closing database connection
         connection.close();
