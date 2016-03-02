@@ -151,14 +151,28 @@ public class JDBCExample {
         CallableStatement cstmt = connection.prepareCall(callFunction);
         cstmt.setInt(1, salary);
 
-        ResultSet rs = cstmt.executeQuery();
         System.out.println("Executing Query...");
-        rs.next();
-        Object o = rs.getObject(1); // ref cursor
-        ResultSet rsrs = (ResultSet) o;
-        while(rsrs.next()){
-            System.out.println(rsrs.getString(1));
+        ResultSet rs = cstmt.executeQuery();
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int numColumns = rsmd.getColumnCount();
+        
+        while (rs.next()) {
+            for (int i = 1; i <= numColumns; ++i) {
+                int type = rsmd.getColumnType(i);
+                System.out.println("type is " + type);
+//            Object o = rs.getObject(i);
+//            ResultSet rsrs = (ResultSet) o;
+            }
         }
+
+
+        
+//        rs.next();
+//        Object o = rs.getObject(1); // ref cursor
+//        ResultSet rsrs = (ResultSet) o;
+//        while(rsrs.next()){
+//            System.out.println(rsrs.getString(1));
+//        }
         cstmt.close();
         System.out.println("Finish Calling Function");
 
