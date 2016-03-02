@@ -159,12 +159,7 @@ public class JDBCExample {
         while (rs.next()) {
             for (int i = 1; i <= rsNumColumns; ++i) {
                 String type = rsmd.getColumnTypeName(i);
-//                if (type == Types.JAVA_OBJECT) System.out.println("type is java object");
-//                if (type == Types.REF_CURSOR) {
-//                    System.out.println("type is ref cursor");
-//                }
-                System.out.println(rsmd.getColumnTypeName(i));
-                System.out.println(rsmd.getColumnTypeName(i).equals("refcursor"));
+
                 if (type.equals("refcursor")){
                     Object o = rs.getObject(i);
                     ResultSet rsrs = (ResultSet) o;
@@ -176,21 +171,9 @@ public class JDBCExample {
                         }
                     }
                 }
-
-
-//            Object o = rs.getObject(i);
-//            ResultSet rsrs = (ResultSet) o;
             }
         }
 
-
-        
-//        rs.next();
-//        Object o = rs.getObject(1); // ref cursor
-//        ResultSet rsrs = (ResultSet) o;
-//        while(rsrs.next()){
-//            System.out.println(rsrs.getString(1));
-//        }
         cstmt.close();
         System.out.println("Finish Calling Function");
 
