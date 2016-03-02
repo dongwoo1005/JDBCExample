@@ -158,8 +158,8 @@ public class JDBCExample {
 
         System.out.println("QUERY RESULT FROM 1(d):");
         System.out.println("-------------------------");
-        while (rs.next()) {
-            for (int i = 1; i <= rsNumColumns; ++i) {
+        while (rs.next()) { // each rows
+            for (int i = 1; i <= rsNumColumns; ++i) { // each columns
                 String type = rsmd.getColumnTypeName(i);
 
                 if (type.equals("refcursor")){
