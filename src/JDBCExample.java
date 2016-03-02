@@ -156,7 +156,7 @@ public class JDBCExample {
         ResultSetMetaData rsmd = rs.getMetaData();
         int rsNumColumns = rsmd.getColumnCount();
 
-        System.out.println("\nQUERY RESULT FROM 1(d):");
+        System.out.println("QUERY RESULT FROM 1(d):");
         System.out.println("-------------------------");
         while (rs.next()) {
             for (int i = 1; i <= rsNumColumns; ++i) {
