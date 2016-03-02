@@ -155,7 +155,9 @@ public class JDBCExample {
         ResultSet rs = cstmt.executeQuery();
         ResultSetMetaData rsmd = rs.getMetaData();
         int rsNumColumns = rsmd.getColumnCount();
-        
+
+        System.out.println("\nQUERY RESULT FROM 1(d):");
+        System.out.println("-------------------------");
         while (rs.next()) {
             for (int i = 1; i <= rsNumColumns; ++i) {
                 String type = rsmd.getColumnTypeName(i);
@@ -173,6 +175,7 @@ public class JDBCExample {
                 }
             }
         }
+        System.out.println("-------------------------");
 
         cstmt.close();
         System.out.println("Finish Calling Function");
