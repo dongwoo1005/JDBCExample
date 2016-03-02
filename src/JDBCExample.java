@@ -160,8 +160,11 @@ public class JDBCExample {
             for (int i = 1; i <= numColumns; ++i) {
                 int type = rsmd.getColumnType(i);
                 if (type == Types.JAVA_OBJECT) System.out.println("type is java object");
-                if (type == Types.REF_CURSOR) System.out.println("type is ref cursor");
+                if (type == Types.REF_CURSOR) {
+                    System.out.println("type is ref cursor");
+                }
                 System.out.println(rsmd.getColumnTypeName(i));
+                System.out.println(type == Types.REF_CURSOR);
 //            Object o = rs.getObject(i);
 //            ResultSet rsrs = (ResultSet) o;
             }
