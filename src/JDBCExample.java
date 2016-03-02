@@ -154,17 +154,30 @@ public class JDBCExample {
         System.out.println("Executing Query...");
         ResultSet rs = cstmt.executeQuery();
         ResultSetMetaData rsmd = rs.getMetaData();
-        int numColumns = rsmd.getColumnCount();
+        int rsNumColumns = rsmd.getColumnCount();
         
         while (rs.next()) {
-            for (int i = 1; i <= numColumns; ++i) {
-                int type = rsmd.getColumnType(i);
-                if (type == Types.JAVA_OBJECT) System.out.println("type is java object");
-                if (type == Types.REF_CURSOR) {
-                    System.out.println("type is ref cursor");
-                }
+            for (int i = 1; i <= rsNumColumns; ++i) {
+                String type = rsmd.getColumnTypeName(i);
+//                if (type == Types.JAVA_OBJECT) System.out.println("type is java object");
+//                if (type == Types.REF_CURSOR) {
+//                    System.out.println("type is ref cursor");
+//                }
                 System.out.println(rsmd.getColumnTypeName(i));
-                System.out.println(type == Types.REF_CURSOR);
+                System.out.println(rsmd.getColumnTypeName(i).equals("refcursor"));
+                if (type.equals("refcursor")){
+                    Object o = rs.getObject(i);
+                    ResultSet rsrs = (ResultSet) o;
+                    ResultSetMetaData rsrsmd = rsrs.getMetaData();
+                    int rsrsNumColumns = rsrsmd.getColumnCount();
+                    while (rsrs.next()){
+                        for (int j=1; j<= rsrsNumColumns; ++j){
+                            System.out.println(rsrs.getString(i));
+                        }
+                    }
+                }
+
+
 //            Object o = rs.getObject(i);
 //            ResultSet rsrs = (ResultSet) o;
             }
